@@ -48,8 +48,6 @@ export class ProdutosArmazenados{
             return possivelProduto
     }
 
-   
-
     async removerProduto (Id:string){
         const Produto = this.buscaporID(Id);
         this.#Produtos = this.Produtos.filter(
