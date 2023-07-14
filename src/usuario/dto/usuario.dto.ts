@@ -1,5 +1,5 @@
 import { IsEmail, IsInt, IsNotEmpty, IsString, MinLength } from "class-validator";
-import { EmailUnico } from "src/usuario/validacao/email-unico.validator";
+import { EmailUnico } from "src/validacao/email-unico.validator";
 
 export class CriaUsuarioDTO{
     @IsString()

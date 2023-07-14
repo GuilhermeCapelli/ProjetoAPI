@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { EmailUnicoValidator } from "src/usuario/validacao/email-unico.validator";
+import { EmailUnicoValidator } from "src/validacao/email-unico.validator";
 import { UsuarioController } from "./usuario.controller";
 import { UsuariosArmazenados } from "./usuario.dm";
 

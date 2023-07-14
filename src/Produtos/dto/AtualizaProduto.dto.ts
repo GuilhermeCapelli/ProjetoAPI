@@ -1,4 +1,4 @@
-import { IsArray, IsBoolean, IsInt, IsNotEmpty, IsNumber, IsString} from "class-validator";
+import { IsArray, IsBoolean, IsInt, IsNotEmpty, IsNumber, IsOptional, IsString} from "class-validator";
 
 export class AtualizaProdutoDTO{;
     @IsString()
@@ -18,9 +18,10 @@ export class AtualizaProdutoDTO{;
     Valor: number;
 
     @IsString({message: "Estoque Invalido"})
-    Estoque: BigInteger;
+    Estoque: Number;
  
     @IsArray()
     @IsString({message: "Medidas inválido"})
     Medidas: Array<string>;
+
 }

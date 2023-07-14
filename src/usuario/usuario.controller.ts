@@ -1,11 +1,10 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { CriaUsuarioDTO } from "./dto/usuario.dto";
 import { UsuarioEntity } from "./usuario.entity";
 import { UsuariosArmazenados } from "./usuario.dm";
 import {v4 as uuid} from 'uuid';
 import { listaUsuarioDTO } from "./dto/listaUsuario.dto";
-import { AtualizaUsuarioDTO } from "./dto/AtualizaUsuario.dto";
-import { error } from "console";
+import { AlteraUsuarioDTO } from "./dto/atualizaUsuario.dto";
+import {  Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 
 @Controller('/usuarios')
 export class UsuarioController{
@@ -43,20 +42,23 @@ export class UsuarioController{
         
         return retornoUsuario;
     }
-        @Put('/:id')        
-        async AtualizaUsuario(@Param('id') id: string, @Body()novosDados: AtualizaUsuarioDTO){
-        const UsuarioAtualizado = await this.clsUsuariosArmazenados.AtualizaUsuario(id,novosDados);
-        return{
-        usuario:UsuarioAtualizado,
-        message:'Usuario Atualizado'
+
+    
+    @Put('/:id')
+    async atualizaUsuario(@Param('id') id: string, @Body() novosDados: AlteraUsuarioDTO){
+        const usuarioAtualizado = await this.clsUsuariosArmazenados.atualizaUsuario(id, novosDados);
+        return {
+            usuario: usuarioAtualizado,
+            message: 'Usuário atualizado'
+        }
     }
-    }
+
     @Delete('/:id')
-       async RemoveUsuario(@Param('id') id: string,){
-        const usuarioRemovido = await this.clsUsuariosArmazenados.removerUsuario(id);
-        return{
-        usuario:usuarioRemovido,
-        message:'Usuario Removido'
+    async removeUsuario(@Param('id') id: string){
+        const usuarioRemovido = await this.clsUsuariosArmazenados.removeUsuario(id);
+        return {
+            usuario: usuarioRemovido,
+            message: 'Usuário removido'
         }
     }
 }
